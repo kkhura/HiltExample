@@ -1,8 +1,7 @@
 package com.kkhura.hiltexample.dashboard.translate.reprository
 
-import com.kkhura.hiltexample.HiltApplication
 import com.kkhura.hiltexample.di.qualifier.AppQualifier
-import com.mindorks.framework.mvvm.data.api.ApiHelper
+import com.kkhura.hiltexample.api.ApiHelper
 import javax.inject.Inject
 
 class TranslateReprository @Inject constructor(private val apiHelper: ApiHelper) {

@@ -1,4 +1,4 @@
-package com.mindorks.framework.mvvm.data.model
+package com.kkhura.hiltexample.dashboard.user.model
 
 import com.kkhura.hiltexample.dashboard.user.model.SimpplrModel
 

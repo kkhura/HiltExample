@@ -1,4 +1,4 @@
-package com.github.aakira.hilt.di.module
+package com.kkhura.hiltexample.di.module
 
 import android.content.Context
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -7,9 +7,9 @@ import com.kkhura.hiltexample.R
 import com.kkhura.hiltexample.dashboard.translate.view.SinglentonObject
 import com.kkhura.hiltexample.di.qualifier.AppQualifier
 import com.kkhura.hiltexample.di.qualifier.RetrofitQualifier
-import com.mindorks.framework.mvvm.data.api.ApiHelper
-import com.mindorks.framework.mvvm.data.api.ApiHelperImpl
-import com.mindorks.framework.mvvm.data.api.RestAPIInterface
+import com.kkhura.hiltexample.api.ApiHelper
+import com.kkhura.hiltexample.api.ApiHelperImpl
+import com.kkhura.hiltexample.api.RestAPIInterface
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

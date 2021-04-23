@@ -1,7 +1,7 @@
-package com.mindorks.framework.mvvm.data.api
+package com.kkhura.hiltexample.api
 
 import com.kkhura.hiltexample.di.qualifier.RetrofitQualifier
-import com.mindorks.framework.mvvm.data.model.User
+import com.kkhura.hiltexample.dashboard.user.model.User
 import javax.inject.Inject
 import io.reactivex.Observable
 

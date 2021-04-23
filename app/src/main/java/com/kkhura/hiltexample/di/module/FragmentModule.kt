@@ -1,4 +1,4 @@
-package com.github.aakira.hilt.di.module
+package com.kkhura.hiltexample.di.module
 
 import android.content.Context
 import com.kkhura.hiltexample.R

@@ -1,4 +1,4 @@
-package com.workwin.aurora.tanslation.model
+package com.kkhura.hiltexample.dashboard.translate.model
 
 import com.google.gson.annotations.SerializedName
 

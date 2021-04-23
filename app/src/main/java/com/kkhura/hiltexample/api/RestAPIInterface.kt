@@ -1,7 +1,7 @@
-package com.mindorks.framework.mvvm.data.api
+package com.kkhura.hiltexample.api
 
-import com.mindorks.framework.mvvm.data.model.User
-import com.workwin.aurora.tanslation.model.TranslationObject
+import com.kkhura.hiltexample.dashboard.user.model.User
+import com.kkhura.hiltexample.dashboard.translate.model.TranslationObject
 import io.reactivex.Observable
 import retrofit2.http.Body
 import retrofit2.http.GET
