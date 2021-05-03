@@ -25,7 +25,7 @@ class UserFragment : Fragment(R.layout.fragment_user) {
         super.onViewCreated(view, savedInstanceState)
         userViewModel.fetchUsers()
 
-        userViewModel.userResponse.observe(viewLifecycleOwner, Observer {
+        userViewModel.userResponse.observe(viewLifecycleOwner, {
             textFragment.text = it
         })
     }

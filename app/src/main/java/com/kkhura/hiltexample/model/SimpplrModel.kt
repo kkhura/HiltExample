@@ -1,3 +1,3 @@
-package com.kkhura.hiltexample.dashboard.user.model
+package com.kkhura.hiltexample.model
 
-open class SimpplrModel()
+open class SimpplrModel

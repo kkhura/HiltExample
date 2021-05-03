@@ -1,11 +1,11 @@
 package com.kkhura.hiltexample.dashboard
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.kkhura.hiltexample.R
 import dagger.hilt.android.AndroidEntryPoint
-import androidx.activity.viewModels
 import kotlinx.android.synthetic.main.activity_main.*
 
 @AndroidEntryPoint

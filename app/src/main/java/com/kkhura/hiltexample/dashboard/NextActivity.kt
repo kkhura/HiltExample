@@ -5,7 +5,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.kkhura.hiltexample.R
 import com.kkhura.hiltexample.dashboard.translate.view.TranslateFragment
-import com.kkhura.hiltexample.dashboard.translate.view.TranslateJavaFragment
 import com.kkhura.hiltexample.dashboard.user.view.UserFragment
 import com.kkhura.hiltexample.di.qualifier.ActivityQualifier
 import com.kkhura.hiltexample.di.qualifier.AppQualifier

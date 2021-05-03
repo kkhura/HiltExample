@@ -37,7 +37,7 @@ class TranslateFragment : Fragment(R.layout.fragment_user) {
 
         userViewModel.fetchTranslation(newMap, "https://blanc-stg1--simpplr.visualforce.com/")
 
-        userViewModel.userResponse.observe(viewLifecycleOwner, Observer {
+        userViewModel.userResponse.observe(viewLifecycleOwner, {
             textFragment.text = it
         })
     }

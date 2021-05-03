@@ -14,7 +14,7 @@ import io.reactivex.schedulers.Schedulers
 
 class UserViewModel @ViewModelInject constructor(
     private val userReprository: UserReprository,
-    @ActivityContext private val context: Context,
+    @ActivityContext private var context: Context?,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
@@ -27,11 +27,16 @@ class UserViewModel @ViewModelInject constructor(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ body ->
-                    Log.d("TAg", context.getString(R.string.activity_context))
+                    Log.d("TAg", context?.getString(R.string.activity_context)?: kotlin.run { "" })
                     userResponse.value = body.toString()
                 }, { throwable ->
                     userResponse.value = throwable.toString()
                 })
         )
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        context = null
     }
 }
