@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.kkhura.hiltexample.R;
@@ -47,16 +46,13 @@ public class TranslateJavaFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         HashMap<String, String> map = new HashMap<>();
-         map.put(TranslationConstantKt.TARGET_LANGUAGE, "es");
+        map.put(TranslationConstantKt.TARGET_LANGUAGE, "es");
         map.put(TranslationConstantKt.SOURCE_LANGUAGE, "en");
         map.put(TranslationConstantKt.STRING, "Hello world");
         userViewModel.fetchTranslation(map, "https://blanc-stg1--simpplr.visualforce.com/");
-        userViewModel.getUserResponse().observe(getViewLifecycleOwner(), new Observer() {
-            @Override
-            public void onChanged(Object o) {
-                if (o instanceof String) {
-                    ((TextView) rootView.findViewById(R.id.textFragment)).setText((String) o);
-                }
+        userViewModel.getUserResponse().observe(getViewLifecycleOwner(), o -> {
+            if (o != null) {
+                ((TextView) rootView.findViewById(R.id.textFragment)).setText(o);
             }
         });
 

@@ -1,24 +1,21 @@
 package com.kkhura.hiltexample.dashboard.user.viewmodel
 
-import android.content.Context
-import android.util.Log
-import androidx.hilt.Assisted
-import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.*
-import com.kkhura.hiltexample.R
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import com.kkhura.hiltexample.dashboard.user.model.User
 import com.kkhura.hiltexample.dashboard.user.reprository.UserReprository
-import dagger.hilt.android.qualifiers.ActivityContext
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class UserViewModel @ViewModelInject constructor(
+@HiltViewModel
+class UserViewModel @Inject constructor(
     private val userReprository: UserReprository,
-    @ActivityContext private var context: Context?,
-    @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
-    val userResponse = MutableLiveData<String>()
+    val userList = MutableLiveData<List<User>>()
 
     fun fetchUsers() {
         compositeDisposable.add(
@@ -26,17 +23,18 @@ class UserViewModel @ViewModelInject constructor(
                 .getUsers()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ body ->
-                    Log.d("TAg", context?.getString(R.string.activity_context)?: kotlin.run { "" })
-                    userResponse.value = body.toString()
+                .subscribe({ userData ->
+                    if (userData.data.isNotEmpty()) {
+                        userList.value = userData.data
+                    }
                 }, { throwable ->
-                    userResponse.value = throwable.toString()
+                    throwable.stackTrace
                 })
         )
     }
 
     override fun onCleared() {
         super.onCleared()
-        context = null
+        compositeDisposable.dispose()
     }
 }

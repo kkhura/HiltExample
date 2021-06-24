@@ -1,18 +1,19 @@
 package com.kkhura.hiltexample.dashboard.translate.viewmodel
 
 import android.util.Log
-import androidx.hilt.Assisted
-import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.*
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.kkhura.hiltexample.dashboard.translate.reprository.TranslateReprository
 import com.kkhura.hiltexample.di.qualifier.AppQualifier
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class TranslateViewModel @ViewModelInject constructor(
+@HiltViewModel
+class TranslateViewModel @Inject constructor(
     private val translateReprository: TranslateReprository,
-    @Assisted private val savedStateHandle: SavedStateHandle,
     @AppQualifier val applicationString: String
 ) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()

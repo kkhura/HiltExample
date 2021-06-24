@@ -6,14 +6,16 @@ import androidx.appcompat.app.AppCompatActivity
 import com.kkhura.hiltexample.R
 import com.kkhura.hiltexample.dashboard.translate.view.TranslateFragment
 import com.kkhura.hiltexample.dashboard.user.view.UserFragment
+import com.kkhura.hiltexample.databinding.ActivityNextBinding
 import com.kkhura.hiltexample.di.qualifier.ActivityQualifier
 import com.kkhura.hiltexample.di.qualifier.AppQualifier
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_next.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class NextActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityNextBinding
 
     @ActivityQualifier
     @Inject
@@ -26,21 +28,22 @@ class NextActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_next)
+        binding = ActivityNextBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+        binding.textActivity.text = activityString
+        binding.textApplicaation.text = applicationString
 
-        textActivity.text = activityString
-        textApplicaation.text = applicationString
-
-        textActivity.setOnClickListener {
-            frameContainer.visibility = View.VISIBLE
+        binding.textActivity.setOnClickListener {
+            binding.frameContainer.visibility = View.VISIBLE
             supportFragmentManager
                 .beginTransaction()
                 .add(R.id.frameContainer, TranslateFragment())
                 .commit()
         }
 
-        textApplicaation.setOnClickListener {
-            frameContainer.visibility = View.VISIBLE
+        binding.textApplicaation.setOnClickListener {
+            binding.frameContainer.visibility = View.VISIBLE
             supportFragmentManager
                 .beginTransaction()
                 .add(R.id.frameContainer, UserFragment())

@@ -1,9 +1,9 @@
 package com.kkhura.hiltexample.api
 
+import com.kkhura.hiltexample.dashboard.user.model.UserList
 import com.kkhura.hiltexample.di.qualifier.RetrofitQualifier
-import com.kkhura.hiltexample.dashboard.user.model.User
-import javax.inject.Inject
 import io.reactivex.Observable
+import javax.inject.Inject
 
 
 class ApiHelperImpl @Inject constructor(
@@ -11,7 +11,7 @@ class ApiHelperImpl @Inject constructor(
     @RetrofitQualifier val translateRestAPIInterface: RestAPIInterface
 ) : ApiHelper {
 
-    override fun getUsers(): Observable<List<User>> = restAPIInterface.getUsers()
+    override fun getUsers(): Observable<UserList> = restAPIInterface.getUsers()
 
     override fun getTranslationData(
         map: Map<String, String>,

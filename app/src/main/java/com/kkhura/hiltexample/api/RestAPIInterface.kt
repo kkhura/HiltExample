@@ -1,7 +1,7 @@
 package com.kkhura.hiltexample.api
 
-import com.kkhura.hiltexample.dashboard.user.model.User
 import com.kkhura.hiltexample.dashboard.translate.model.TranslationObject
+import com.kkhura.hiltexample.dashboard.user.model.UserList
 import io.reactivex.Observable
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -11,7 +11,7 @@ import retrofit2.http.POST
 interface RestAPIInterface {
 
     @GET("users")
-    fun getUsers(): Observable<List<User>>
+    fun getUsers(): Observable<UserList>
 
     @POST("language/translate/v2?key=AIzaSyA7lHSVE5ZkBNw_AAOFOioH18eDNLZXjis")
     fun getTranslationData(

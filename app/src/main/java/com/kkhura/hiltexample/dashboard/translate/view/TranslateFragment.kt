@@ -1,23 +1,26 @@
 package com.kkhura.hiltexample.dashboard.translate.view
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.kkhura.hiltexample.R
 import com.kkhura.hiltexample.dashboard.translate.SOURCE_LANGUAGE
 import com.kkhura.hiltexample.dashboard.translate.STRING
 import com.kkhura.hiltexample.dashboard.translate.TARGET_LANGUAGE
 import com.kkhura.hiltexample.dashboard.translate.viewmodel.TranslateViewModel
+import com.kkhura.hiltexample.databinding.FragmentTranslateBinding
 import com.kkhura.hiltexample.di.qualifier.FragmentQualifier
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_user.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class TranslateFragment : Fragment(R.layout.fragment_user) {
+class TranslateFragment : Fragment() {
 
+    private lateinit var binding: FragmentTranslateBinding
     private val userViewModel by viewModels<TranslateViewModel>()
 
     @FragmentQualifier
@@ -26,6 +29,22 @@ class TranslateFragment : Fragment(R.layout.fragment_user) {
 
     @Inject
     lateinit var singlentonObject: SinglentonObject
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        context?.let {
+            binding = DataBindingUtil.inflate<FragmentTranslateBinding>(
+                inflater,
+                R.layout.fragment_translate,
+                container,
+                false
+            )
+        }
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,7 +57,7 @@ class TranslateFragment : Fragment(R.layout.fragment_user) {
         userViewModel.fetchTranslation(newMap, "https://blanc-stg1--simpplr.visualforce.com/")
 
         userViewModel.userResponse.observe(viewLifecycleOwner, {
-            textFragment.text = it
+            binding.textFragment.text = it
         })
     }
 }

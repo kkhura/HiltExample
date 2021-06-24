@@ -4,12 +4,12 @@ import android.content.Context
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.kkhura.hiltexample.BuildConfig
 import com.kkhura.hiltexample.R
-import com.kkhura.hiltexample.dashboard.translate.view.SinglentonObject
-import com.kkhura.hiltexample.di.qualifier.AppQualifier
-import com.kkhura.hiltexample.di.qualifier.RetrofitQualifier
 import com.kkhura.hiltexample.api.ApiHelper
 import com.kkhura.hiltexample.api.ApiHelperImpl
 import com.kkhura.hiltexample.api.RestAPIInterface
+import com.kkhura.hiltexample.dashboard.translate.view.SinglentonObject
+import com.kkhura.hiltexample.di.qualifier.AppQualifier
+import com.kkhura.hiltexample.di.qualifier.RetrofitQualifier
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,7 +34,7 @@ object ApplicationModule {
     }
 
     @Provides
-    fun provideBaseUrl() = "https://5e510330f2c0d300147c034c.mockapi.io"
+    fun provideBaseUrl() = "https://reqres.in/api/"
 
     @Provides
     @Singleton
