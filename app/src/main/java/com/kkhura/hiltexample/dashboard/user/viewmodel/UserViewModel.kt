@@ -15,7 +15,7 @@ class UserViewModel @Inject constructor(
     private val userReprository: UserReprository,
 ) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
-    val userList = MutableLiveData<List<User>>()
+    var userList = MutableLiveData<ArrayList<User>>()
 
     fun fetchUsers() {
         compositeDisposable.add(

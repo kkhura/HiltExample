@@ -10,14 +10,13 @@ import com.kkhura.hiltexample.dashboard.user.model.User
 import com.kkhura.hiltexample.databinding.UserListBinding
 
 class UserAdapter(val context: Context) : RecyclerView.Adapter<UserAdapter.UserHolder>(),
-    BindableAdapter<User> {
+    BindableAdapter<List<User>> {
 
     var userList: ArrayList<User> = arrayListOf()
 
-    override fun setData(data: List<User>?) {
-        data?.let {
-            userList.addAll(data)
-        }
+    override fun setData(data: List<User>) {
+        userList.addAll(data)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserHolder {

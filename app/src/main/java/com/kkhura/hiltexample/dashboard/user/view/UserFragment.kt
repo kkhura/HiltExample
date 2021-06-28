@@ -48,7 +48,9 @@ class UserFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         userViewModel.fetchUsers()
+        userViewModel.userList.observe(viewLifecycleOwner, {
+            binding.userAdapter?.userList = it
+            binding.userAdapter?.notifyDataSetChanged()
+        })
     }
-
-
 }
